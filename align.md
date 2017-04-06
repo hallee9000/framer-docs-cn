@@ -2,6 +2,7 @@
 
 Align函数帮助你迅速地把一个元素相对于它的父级摆放好位置。使用它们把一个图层放置在它的父级的上下左右或中间。它可以用在属性、状态或者动画中。
 
+```coffeescript
     # Create a layer an position it in the center 
     layerA = new Layer
         x: Align.center
@@ -17,15 +18,17 @@ Align函数帮助你迅速地把一个元素相对于它的父级摆放好位置
             y: Align.top
 
     layerA.onTap -> layerA.states.next()
-
+```
 
 当你需要某个元素的坐标值的时候，Align函数可以动态地计算出它的坐标值。当你在某个状态把一个元素放在右下角，Align函数也可以计算，除非你在转换状态时改变了窗口大小。
 
 你也可以选择性地使用偏移量。
 
+```coffeescript
 	layerA = new Layer
 	    x: Align.center(-100) # 100 pixels left from the center 
 	    y: Align.top(100) # 100 pixels from the top 
+```
 
 需要注意的是left和right只对x值起作用，top和bottom只对y值起作用，center对他们都起作用。在直接编程时，对比于layer.center() Align是一个更好的选择，因为它可以自适应。
 
@@ -38,12 +41,13 @@ Align函数帮助你迅速地把一个元素相对于它的父级摆放好位置
 
 * **offset** — 数字(可选的)
 
-
+```coffeescript
     layerA = new Layer
         y: Align.bottom
      
     layerB = new Layer
         y: Align.bottom(-100) # 100 pixels from the bottom 
+```
 
 <a id="align.center"></a>
 ## align.center(offset)
@@ -54,7 +58,7 @@ Align函数帮助你迅速地把一个元素相对于它的父级摆放好位置
 
 * **offset** — 数字(可选的).
 
-
+```coffeescript
     layerA = new Layer
         x: Align.center
         y: Align.center
@@ -62,6 +66,7 @@ Align函数帮助你迅速地把一个元素相对于它的父级摆放好位置
     layerB = new Layer
         x: Align.center(+100)
         y: Align.center(-100)
+```
 
 <a id="align.left"></a>
 ## align.left(offset)
