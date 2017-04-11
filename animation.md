@@ -6,6 +6,12 @@
 动画选项允许你自定义动画的运动曲线、时间、延迟等。一个图层可以同时执行多个动画，但是如果你给同一个属性定义了两个动画，则只会以最后一个为准。
 >The animation options allow you to define curves, timing, delays and more. Layers can run multiple animations at the same time. If animations affect the same layer properties, only the last one will run.
 
+<a id="animation.properties"></a>
+## Animatable Properties
+
+只有数值型图层属性和颜色属性才可以被执行动画。
+>Only numeric layer properties and color can be animated.
+
 ### 属性值
 
 * **layer** — 一个图层对象，需要执行动画的图层。
@@ -17,6 +23,7 @@
 这里我们给layerA设置一个新的动画。动画开始后这个图层就会从0水平移动到100.需要注意的是，有很多可选的动画参数我们没有写，那么这个动画就默认执行1秒，使用`ease`曲线。
 >Here, we create a new Animation for layerA. Once we start the animation, it will move horizontally from 0 to 100. Note that we left out many optional arguments. By default, the animation will take 1 second, with an ease curve.
 
+```coffeescript
     layerA = new Layer
 
     # Animate the layer to the right
@@ -24,12 +31,14 @@
         layer: layerA
         properties:
             x: 100
+```
 
 #### 示例：图层和状态
 
 使用一个状态对象来代替属性对象，以此来控制图层动画。
 >Animate a layer using a layer state by inserting the State object instead of layer properties.
 
+```coffeescript
     layerA = new Layer
 
     layerA.states.stateA =
@@ -40,12 +49,14 @@
         layerA.states.stateA
 
     animationB.start()
+```
 
 #### 示例：多属性动画和时间
 
 我们可以对多个属性同时执行动画。下面的代码就是在5秒内让图层的x坐标和透明度同时变化。
 >Multiple properties can be animated at once. Here, we animate the x and opacity properties, with a duration of 5 seconds.
 
+```coffeescript
     layerA = new Layer
 
     # Animate multiple properties for 5 seconds
@@ -56,12 +67,14 @@
             time: 5
 
     animationC.start()
+```
 
 #### 示例：重复和延迟
 
 当启用重复选项时，动画结束时变化的属性就会立即恢复到开始的状态。下面的例子中，图层的动画每次重复之间会有2秒的延迟。
 >When using repeat, the end values of properties will be reset to their starting position instantly. In the example below, there is a 2 second delay between every repeat.
 
+```coffeescript
     layerA = new Layer
 
     # Repeat an animation 5 times, delay for 2 seconds
@@ -72,6 +85,7 @@
             delay: 2
 
     animationD.start()
+```
 
 <a id="animation.curves"></a>
 ## 动画曲线
@@ -85,6 +99,7 @@
 
 #### 示例: Bezier
 
+```coffeescript
     layerA = new Layer
 
     # Animate with a bezier curve
@@ -93,6 +108,7 @@
         opacity: 0.5
         options:
             curve: Bezier(0.25, 0.1, 0.25, 1)
+```
 
 #### 示例: Spring
 
@@ -103,7 +119,7 @@
 * **mass** — 运动图层的质量（可选）。
 * **velocity** — 开始速度（可选）。
 
-
+```coffeescript
     layerA = new Layer
 
     # Animate with a spring curve
@@ -112,6 +128,7 @@
         options:
             curve: Spring(damping: 0.5)
             time: 0.5
+```
 
 #### 示例: Classic Spring
 
@@ -123,7 +140,7 @@
 * **velocity** — 初始速度（可选）。
 * **tolerance** — 动画结束前的最小值（可选）。
 
-
+```coffeescript
     layerA = new Layer
 
     # Animate with a spring curve
@@ -131,6 +148,7 @@
         x: 100
         options:
             curve: Spring(tension: 250, friction: 25)
+```
 
 <a id="animation.properties"></a>
 ## Animatable Properties
@@ -175,6 +193,7 @@
 开始一个动画。
 >Start the animation.
 
+```coffeescript
     layerA = new Layer
 
     animationA = new Animation layerA,
@@ -182,6 +201,7 @@
 
     # Nothing will move until we start
     animationA.start()
+```
 
 <a id="animation.stop"></a>
 ## animation.stop()
@@ -189,6 +209,7 @@
 停止一个动画。
 >Stop the animation.
 
+```coffeescript
     layerA = new Layer
 
     animationA = new Animation layerA,
@@ -198,6 +219,7 @@
 
     # Stop the animation
     animationA.stop()
+```
 
 <a id="animation.reverse"></a>
 ## animation.reverse()
@@ -205,6 +227,7 @@
 创建一个反向动画，即所有属性值变化和既定的相反(但不会立即执行)。
 >Create a new animation with all reverse values.
 
+```coffeescript
     layerA = new Layer
 
     animationA = new Animation layerA,
@@ -217,6 +240,7 @@
     animationB.on Events.AnimationEnd, animationA.start
 
     animationA.start()
+```
 
 <a id="animation.reset"></a>
 ## animation.reset()
@@ -224,6 +248,7 @@
 将图层重置到初始状态。
 >Reset the layer to its default state.
 
+```coffeescript
     layerA = new Layer
 
     animationA = new Animation layerA,
@@ -234,6 +259,7 @@
     # On animation end reset the animation
     animationA.on Events.AnimationEnd, ->
         animationA.reset()
+```
 
 <a id="animation.restart"></a>
 ## animation.restart()
@@ -241,6 +267,7 @@
 将图层重置到初始状态并再次开始执行动画。
 >Reset the layer to its default state and start the animation again.
 
+```coffeescript
     layerA = new Layer
 
     animationA = new Animation layerA,
@@ -251,6 +278,7 @@
     # On animation end restart the animation
     animationA.on Events.AnimationEnd, ->
         animationA.restart()
+```
 
 <a id="animation.finish"></a>
 ## animation.finish()
@@ -258,6 +286,7 @@
 停止动画并跳到结束状态。
 >Stop the currently active animation and jump to its end state.
 
+```coffeescript
     layerA = new Layer
 
     animationA = new Animation layerA,
@@ -269,3 +298,4 @@
     # Finish the animation after a 1 second delay
     Utils.delay 1, ->
         animationA.finish()
+```
