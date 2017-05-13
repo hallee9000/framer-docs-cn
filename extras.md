@@ -115,6 +115,7 @@ Invisible layers will not show hints, unless they are set to invisible or their 
 
 ### 定制
 
+你可以使用 `setLogo()` 方法来自定义预加载的图片，比如说用你自己的 logo 。
 >You can customize the preloader image with any image, such as your logo. To do so, use the setLogo() function:
 
     Framer.Extras.Preloader.enable()
@@ -122,8 +123,10 @@ Invisible layers will not show hints, unless they are set to invisible or their 
 
 ### 手动改变加载状态图片
 
+虽然 `preloader` 能够发现你项目中使用的图像资源，但有一些特定的图片是在某一个特定的时间或情况下加载，这时候它就侦测不到了。因此，你可以使用 `Framer.Extras.Preloader.addImage()` 来手动加载一些图片。
 >While the preloader often does a great job of discovering the main images used in your project, it may fail to locate specific images that were used at arbitrary points. The preloader also allows you to add these images manually using Framer.Extras.Preloader.addImage().
 
+下面的例子中，`layerB` 中的图片就不能被 `preloader` 发现，因为它是在 `layerA` 被点击之后才加载进来的，而且理论上说它的链接也不可预测。在这种情况下我们就在项目代码的顶部手动添加这个图片。
 >In the example below, the preloader cannot discover the image that layerB uses because it only gets created after a tap, and theoretically could be any url. So in this scenarios, we add the image manually at the top of the prototype.
 
     Framer.Extras.Preloader.enable()
@@ -137,6 +140,12 @@ Invisible layers will not show hints, unless they are set to invisible or their 
 
 ### 一些注意事项:
 
+1. 设备外观图片是不会被 `preloader` 处理的，因为它们一般情况下会被缓存起来，所以能很快显示出来。
+2. `preloader` 的超时时间是 30 秒，超过这个时间即使你的图片资源还没被完全加载也会被展现出来。
+3. 第二次及以后再次访问这个项目时，因为图片会被缓存起来相对来说会快一点。
+4. 视频的预加载是基于 `canplay` 事件的，即当有足够的缓冲数据流保证视频可以播放时。
+5. 加载出错也算是加载完成，因此如果有一些图片丢失没有加载出来也会被展现。
+6. 加载的进度是基于图片数量而非图片大小的，因此当你有很多图片要加载，而且一个比一个大时，最后一步可能就十分漫长。遗憾的是，目前没有好的办法能够让加载进度基于图片大小。
 
 >Device images are not counted against the preloader and are shown instantly because they are likely cached.
 There is a 30 second hard timeout on the preloader, after which your project gets shown even if not all images are loaded.
