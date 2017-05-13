@@ -396,7 +396,7 @@ z属性定义了图层在空间里的位置，即我们常说的纵深。它的�
         width: 300
 
     print layerA.contentFrame()
-    # Output: { x: 0, y: 0, width: 400, height: 100 }
+    # Output: { x: 0, y: 0, width: 400, height: 200 }
 
 <a id="layer.centerFrame"></a>
 ## layer.centerFrame()
