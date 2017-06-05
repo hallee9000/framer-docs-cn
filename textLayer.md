@@ -1,273 +1,355 @@
 # TextLayer
 
-A TextLayer allows you to work with type in Framer. Define text within a string, and use its unique properties to style it. Almost all property names match the CSS text styles. You can change the typeface, change the style, adjust the line height, add padding, shadows and much more.
+`TextLayer`可以帮助你在 Framer 中更加方便地进行文字排版。你可以使用一个字符串来定义文字内容，并使用它的一些特有属性来渲染它的样式。几乎所有的文字图层属性都能在 CSS 中找到，你可以改变字体、改变样式、调整行高、添加内边距或阴影等等。
+>A TextLayer allows you to work with type in Framer. Define text within a string, and use its unique properties to style it. Almost all property names match the CSS text styles. You can change the typeface, change the style, adjust the line height, add padding, shadows and much more.
 
-## text.text <string>
 
-The text content. By default, the color is set to #888.
+<a id="textLayer.text"></a>
+## text.text &lt;string&gt;
 
-    # Create a TextLayer 
+文本图层的文字内容，默认情况下它的颜色是 `#888`。
+>The text content. By default, the color is set to #888.
+
+    # 创建一个文字图层
     title = new TextLayer
         text: "Title"
 
-## text.fontSize <number>
 
-The size of the text. By default, it's set to 40.
+<a id="textLayer.fontSize"></a>
+## text.fontSize &lt;number&gt;
 
-# Set fontSize to 64px 
-title = new TextLayer
-    fontSize: 64
+设置文本图层的字号，默认是 40 像素。
+>The size of the text. By default, it's set to 40.
 
-text.fontFamily <string>
+    # 设置字号为64px 
+    title = new TextLayer
+        fontSize: 64
 
-The current typeface of the text. By default, it's set to use the system typeface of the device you're currently previewing on.
 
-Apple Device: SF UI.
-Google Device: Roboto.
-Microsoft Device: Segoe UI.
-# Create a TextLayer 
-title = new TextLayer
-    fontFamily: "-apple-system"
+<a id="textLayer.fontFamily"></a>
+## text.fontFamily &lt;string&gt;
 
-text.fontWeight <number>
+设置当前字体。默认情况下，它会使用你预览设备的系统字体。
+>The current typeface of the text. By default, it's set to use the system typeface of the device you're currently previewing on.
 
-The weight of the text. By default, it's set to 400.
+* **Apple设备** : SF UI.
+* **Google设备** : Roboto.
+* **Microsoft设备** : Segoe UI.
 
-# Create a TextLayer 
-title = new TextLayer
-    fontWeight: 400
 
-text.fontStyle <string>
+    # 创建一个文字图层 
+    title = new TextLayer
+        fontFamily: "-apple-system"
 
-The style of the text.
 
-# Set font style to italic 
-title = new TextLayer
-    fontStyle: "italic"
+<a id="textLayer.fontWeight"></a>
+## text.fontWeight &lt;number&gt;
 
-You can choose between italic, bold and oblique.
+字体的粗细，默认是 400 。
+>The weight of the text. By default, it's set to 400.
 
-# Set font style to bold 
-title = new TextLayer
-    fontStyle: "bold"
+    # 创建一个文字图层 
+    title = new TextLayer
+        fontWeight: 400
 
-text.font <string>
 
-A shorthand to define all font styles using a single line. These properties can be set (in order): "fontStyle fontWeight fontSize/lineHeight fontFamily".
+<a id="textLayer.fontStyle"></a>
+## text.fontStyle &lt;string&gt;
 
-# Set font styles in one line 
-title = new TextLayer
-    font: "300 64px/1 -apple-system, Helvetica Neue"
+设置字体的风格。
+>The style of the text.
 
-Note that the fontSize and fontFamily properties are required.
+    # 设置字体为斜体风格
+    title = new TextLayer
+        fontStyle: "italic"
 
-# Set font size and font family 
-title = new TextLayer
-    font: "64px -apple-system"
+你可以选择`italic`、`bold`和`oblique`。
+>You can choose between italic, bold and oblique.
 
-text.padding <object>
+* **italic**  会显示一个斜体的字体样式。
+* **bold** 会显示一个加粗的字体样式。
+* **oblique** 会显示一个倾斜的字体样式。
 
-The padding of the text. By default, it's set to 0.
 
-# Set padding 
-title = new TextLayer
-    padding: 40
+    # 设置字体为加粗风格
+    title = new TextLayer
+        fontStyle: "bold"
 
-You can also define padding of each side individually.
 
-# Set padding of each side 
-title = new TextLayer
-    padding:
-        top: 40
-        left: 20
-        bottom: 40
-        right: 20
+<a id="textLayer.font"></a>
+## text.font &lt;string&gt;
 
-Left and right padding can be defined by using the horizontal shorthand. Top and bottom padding can also be defined using the vertical shorthand.
+在一行内定义字体的所有属性。你可以站照这样的顺序写："fontStyle fontWeight fontSize/lineHeight fontFamily"。
+>A shorthand to define all font styles using a single line. These properties can be set (in order): "fontStyle fontWeight fontSize/lineHeight fontFamily".
 
-# Set horizontal and vertical padding 
-title = new TextLayer
-    padding:
-        horizontal: 40
-        vertical: 80
+    # 在一行内设置字体样式属性
+    title = new TextLayer
+        font: "300 64px/1 -apple-system, Helvetica Neue"
 
-text.lineHeight <number>
+需要注意的是`fontSize`和`fontFamily`是必须要写的。
+>Note that the fontSize and fontFamily properties are required.
 
-The line height of the text. By default, it's set to 1.25. This means that if you've set the fontSize to 40, the line-height will effectively be 50px.
+    # 设置字号和字体
+    title = new TextLayer
+        font: "64px -apple-system"
 
-# Set line-height 
-title = new TextLayer
-    lineHeight: 1.5
 
-text.letterSpacing <number>
+<a id="textLayer.padding"></a>
+## text.padding &lt;object&gt;
 
-The letter spacing of the text in pixels. Set to 0 by default.
+文字图层内边距，默认是 0 。
+>The padding of the text. By default, it's set to 0.
 
-# Set letter spacing 
-title = new TextLayer
-    letterSpacing: 2
+    # 设置内边距
+    title = new TextLayer
+        padding: 40
 
-text.wordSpacing <number>
+你也可以给每个方向独立设置不同的内边距。
+>You can also define padding of each side individually.
 
-The letter spacing of the words in pixels. Set to 0 by default.
+    # 给每个方向设置内边距
+    title = new TextLayer
+        padding:
+            top: 40
+            left: 20
+            bottom: 40
+            right: 20
 
-# Set word spacing 
-title = new TextLayer
-    wordSpacing: 10
+当然你也可以使用简写方式：用`horizontal`设置左右内边距，用`vertical`设置上下内边距。
+>Left and right padding can be defined by using the horizontal shorthand. Top and bottom padding can also be defined using the vertical shorthand.
 
-text.textAlign <string>
+    # 设置左右和上下内边距
+    title = new TextLayer
+        padding:
+            horizontal: 40
+            vertical: 80
 
-The alignment of the text.
 
-# Center-align the text 
-title = new TextLayer
-    textAlign: "center"
+<a id="textLayer.lineHeight"></a>
+## text.lineHeight &lt;number&gt;
 
-You can choose between left, right and center.
+文字图层的行高，默认情况下是 1.25 倍。也就是说，当你设置字号为 40px 时，行高就是 50px 。
+>The line height of the text. By default, it's set to 1.25. This means that if you've set the fontSize to 40, the line-height will effectively be 50px.
 
-# Multiple ways to align text 
-title.textAlign = "left"
-title.textAlign = "right"
-title.textAlign = "center"
+    # 设置行高
+    title = new TextLayer
+        lineHeight: 1.5
 
-Alternatively, you can also use the Align class.
 
-# Center-align the text 
-title = new TextLayer
-    textAlign: Align.center
+<a id="textLayer.letterSpacing"></a>
+## text.letterSpacing &lt;number&gt;
 
-text.textTransform <string>
+设置字间距，默认是 0 。
+>The letter spacing of the text in pixels. Set to 0 by default.
 
-The capitalization of the text.
+    # 设置字间距
+    title = new TextLayer
+        letterSpacing: 2&gt;
 
-# Uppercase all characters 
-title = new TextLayer
-    textTransform: "uppercase"
 
-You can choose between uppercase, lowercase and capitalize.
+<a id="textLayer.wordSpacing"></a>
+## text.wordSpacing &lt;number&gt;
 
-# Multiple ways to capitalize text 
-title.textTransform = "uppercase"
-title.textTransform = "lowercase"
-title.textTransform = "capitalize"
+设置词间距，默认是 0 。
+>The letter spacing of the words in pixels. Set to 0 by default.
 
-text.textDecoration <string>
+    # 设置词间距
+    title = new TextLayer
+        wordSpacing: 10
 
-The decoration of the text.
 
-# Add an underline to the text 
-title = new TextLayer
-    textDecoration: "underline"
+<a id="textLayer.textAlign"></a>
+## text.textAlign &lt;string&gt;
 
-You can choose between underline, overline and line-through.
+设置文字对齐方式。
+>The alignment of the text.
 
-# Add an overline to the text 
-title = new TextLayer
-    textDecoration: "overline"
+    # 居中对齐文字 
+    title = new TextLayer
+        textAlign: "center"
 
-text.textIndent <number>
+你可以选择的对齐方式有`left`、`right`和`center`。
+>You can choose between left, right and center.
 
-The indentation of the first paragraph of text in pixels.
+    # 多种对齐方式
+    title.textAlign = "left"
+    title.textAlign = "right"
+    title.textAlign = "center"
 
-# Indent the text by 20 pixels 
-title = new TextLayer
-    textIndent: 20
+当然，你也可以使用`Align`对象。
+>Alternatively, you can also use the Align class.
 
-text.textOverflow <string>
+    # 居中对齐文字
+    title = new TextLayer
+        textAlign: Align.center
 
-Add an ellipsis to overflowing text content.
 
-# Single line clipping 
-paragraph = new TextLayer
-    textOverflow: "ellipsis"
-    text:
-        """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        """
+<a id="textLayer.textTransform"></a>
+## text.textTransform &lt;string&gt;
 
-If you set the height, you’ll be able to add an ellipsis to multiple lines.
+设置字母大小写。
+>The capitalization of the text.
 
-# Multi line clipping 
-paragraph = new TextLayer
-    textOverflow: "ellipsis"
-    height: 100
-    text:
-        """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        """
+    # 大写所有字母 
+    title = new TextLayer
+        textTransform: "uppercase"
 
-text.direction <string>
+你可以设置为`uppercase`、`lowercase`或`capitalize`。
+>You can choose between uppercase, lowercase and capitalize.
 
-The direction of the text. The direction of the text. Set to left-to-right by default.
+    # 多种字母大小写形式
+    title.textTransform = "uppercase"
+    title.textTransform = "lowercase"
+    title.textTransform = "capitalize"
 
-# Set the text direction 
-title = new TextLayer
-    direction: "right-to-left"
 
-You can choose between right-to-left (rtl) and left-to-right (ltr).
+<a id="textLayer.textDecoration"></a>
+## text.textDecoration &lt;string&gt;
 
-# Set the text direction 
-title = new TextLayer
-    direction: "rtl"
+设置文字的修饰。
+>The decoration of the text.
 
-text.truncate <boolean>
+    # 给文字添加下划线
+    title = new TextLayer
+        textDecoration: "underline"
 
-A shorthand of setting textOverflow to "ellipsis".
+你可设置为`underline`、`overline`或`line-through`。
+>You can choose between underline, overline and line-through.
 
-# Single line clipping 
-paragraph = new TextLayer
-    truncate: true
-    text:
-        """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        """
+    # 给文字添加上划线 
+    title = new TextLayer
+        textDecoration: "overline"
 
-If you set the height, you’ll be able to add an ellipsis to multiple lines.
 
-# Multi line clipping 
-paragraph = new TextLayer
-    truncate: true
-    height: 100
-    text:
-        """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        """
+<a id="textLayer.textIndent"></a>
+## text.textIndent &lt;number&gt;
 
-text.shadowX <number>
+设置首字缩进。
+>The indentation of the first paragraph of text in pixels.
 
-Defines the shadow direction on the x-axis. A positive value will produce a shadow from the right edge of a layer, whereas a negative value will produce a shadow from the left edge.
+    # 首字缩进20像素
+    title = new TextLayer
+        textIndent: 20
 
-# Set horizontal text shadow 
-title = new TextLayer
-    shadowX: 10
 
-text.shadowY <number>
+<a id="textLayer.textOverflow"></a>
+## text.textOverflow &lt;string&gt;
 
-Defines the shadow direction on the y-axis. A positive value will produce a shadow from the bottom edge of a layer, whereas a negative value will produce a shadow from the top edge.
+给溢出的文字添加省略号。
+>Add an ellipsis to overflowing text content.
 
-# Set vertical text shadow 
-title = new TextLayer
-    shadowY: 10
+    # 单行截取
+    paragraph = new TextLayer
+        textOverflow: "ellipsis"
+        text:
+            """
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """
 
-text.shadowBlur <number>
+如果你设置了文字图层的高度，就可以给多行文字溢出的部分添加省略号。
+>If you set the height, you’ll be able to add an ellipsis to multiple lines.
 
-Adds a gaussian blur to the shadowX or shadowY property. shadowBlur is defined with a number. The default value is 0.
+    # 多行截取
+    paragraph = new TextLayer
+        textOverflow: "ellipsis"
+        height: 100
+        text:
+            """
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """
 
-# Set text shadow 
-title = new TextLayer
-    shadowY: 1
-    shadowBlur: 4
 
-text.shadowColor <string>
+<a id="textLayer.direction"></a>
+## text.direction &lt;string&gt;
 
-Sets the color of a layers shadow. The color is expressed as a string in the CSS color format.
+文字方向，默认是从左向右。
+>The direction of the text. The direction of the text. Set to left-to-right by default.
 
-# Set text shadow and color 
-title = new TextLayer
-    shadowY: 10
-    shadowColor: "rgba(0,0,0,0.2)"
+    # 设置文字方向
+    title = new TextLayer
+        direction: "right-to-left"
+
+你可以设置为`right-to-left (rtl)`或`left-to-right (ltr)`。
+>You can choose between right-to-left (rtl) and left-to-right (ltr).
+
+    # 设置文字方向
+    title = new TextLayer
+        direction: "rtl"
+
+
+<a id="textLayer.truncate"></a>
+## text.truncate &lt;boolean&gt;
+
+设置文字溢出显示省略号的简写。
+>A shorthand of setting textOverflow to "ellipsis".
+
+    # 单行截取
+    paragraph = new TextLayer
+        truncate: true
+        text:
+            """
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """
+
+如果你设置了文字图层的高度，就可以给多行文字溢出的部分添加省略号。
+>If you set the height, you’ll be able to add an ellipsis to multiple lines.
+
+    #多行截取
+    paragraph = new TextLayer
+        truncate: true
+        height: 100
+        text:
+            """
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """
+
+
+<a id="textLayer.shadowX"></a>
+## text.shadowX &lt;number&gt;
+
+设置文字阴影在 x 轴方向的偏移，正值将会产生一个从右边缘伸出来的阴影，负值将会产生一个从左边缘伸出的阴影。
+>Defines the shadow direction on the x-axis. A positive value will produce a shadow from the right edge of a layer, whereas a negative value will produce a shadow from the left edge.
+
+    # 设置横向文字阴影。
+    title = new TextLayer
+        shadowX: 10
+
+
+<a id="textLayer.shadowY"></a>
+## text.shadowY &lt;number&gt;
+
+设置文字阴影在 y 轴方向的偏移，正值将会产生一个从下边缘伸出来的阴影，负值将会产生一个从上边缘伸出的阴影。
+>Defines the shadow direction on the y-axis. A positive value will produce a shadow from the bottom edge of a layer, whereas a negative value will produce a shadow from the top edge.
+
+    # 设置纵向文字阴影
+    title = new TextLayer
+        shadowY: 10
+
+
+<a id="textLayer.shadowBlur"></a>
+## text.shadowBlur &lt;number&gt;
+
+给文字阴影设置高斯模糊，它的只是一个数字，默认为 0 。
+>Adds a gaussian blur to the shadowX or shadowY property. shadowBlur is defined with a number. The default value is 0.
+
+    # 设置文字阴影 
+    title = new TextLayer
+        shadowY: 1
+        shadowBlur: 4
+
+
+<a id="textLayer.shadowColor"></a>
+## text.shadowColor &lt;string&gt;
+
+给文字阴影设置颜色，使用 CSS 颜色格式。
+>Sets the color of a layers shadow. The color is expressed as a string in the CSS color format.
+
+    # 设置文字阴影颜色
+    title = new TextLayer
+        shadowY: 10
+        shadowColor: "rgba(0,0,0,0.2)"
 

@@ -211,96 +211,107 @@
     # Overlay the layer 
     flow.showOverlayBottom(layerA)
 
+<a id="flowComponent.showOverlayLeft"></a>
 ## flow.showOverlayLeft(layer, options)
 
-Overlay a layer from the left.
+从左侧覆盖一个图层。
+>Overlay a layer from the left.
 
-Arguments
+### 参数
 
-layer — A layer object.
-options.animate — A boolean, sets whether the layer animates. (Optional)
-options.scroll — A boolean, sets whether the layer becomes scrollable. (Optional)
-options.modal — A boolean, sets whether the overlay becomes clickable. (Optional)
-# Create layer 
-layerA = new Layer
-    size: Screen.size
- 
-# Create FlowComponent 
-flow = new FlowComponent
- 
-# Overlay the layer 
-flow.showOverlayLeft(layerA)
+* **layer** — 一个图层对象。
+* **options.animate** — 布尔值，设置图层变换是否需要动画（可选）。
+* **options.scroll** — 布尔值，设置图层是否可滚动（可选）。
+* **options.modal** — 布尔值，设置该模态框是否可点击遮罩层关闭（可选）。
 
-flow.transition(layer, transition, options)
 
-Create a custom transition. The transitions use states internally to cycle back and forward. There are three layers (current, next and background) with two states each (back and forward). If you don’t define a specific state, the FlowComponent assumes you don’t want to animate that layer.
+    # Create layer 
+    layerA = new Layer
+        size: Screen.size
+     
+    # Create FlowComponent 
+    flow = new FlowComponent
+     
+    # Overlay the layer 
+    flow.showOverlayLeft(layerA)
 
-Arguments
+<a id="flowComponent.transition"></a>
+## flow.transition(layer, transition, options)
 
-layer — A layer object.
-transition — A function with the animation states.
-options.animate — A boolean, sets whether the layer animates. (Optional)
-options.scroll — A boolean, sets whether the layer becomes scrollable. (Optional)
-# Custom transition 
-scaleTransition = (nav, layerA, layerB, overlay) ->
-    transition =
-        layerA:
-            show:
-                scale: 1.0
-                opacity: 1
-            hide:
-                scale: 0.5
-                opacity: 0
-        layerB:
-            show:
-                scale: 1.0
-                opacity: 1
-            hide:
-                scale: 0.5
-                opacity: 0
- 
-# Create layers 
-layerA = new Layer
-    backgroundColor: "#00AAFF"
-    size: Screen.size
- 
-layerB = new Layer
-    backgroundColor: "#FFCC33"
-    size: Screen.size
- 
-# Create FlowComponent 
-flow = new FlowComponent
-flow.showNext(layerA)
- 
-# Switch to layerB with custom transition 
-layerA.onClick ->
-    flow.transition(layerB, scaleTransition)
+创建一个自定义过渡效果。
+>Create a custom transition. The transitions use states internally to cycle back and forward. There are three layers (current, next and background) with two states each (back and forward). If you don’t define a specific state, the FlowComponent assumes you don’t want to animate that layer.
 
-The custom transition is a function that returns an object with states. Inside the function you have access to the arguments current FlowComponent, layerA, layerB and the overlay. If you don’t pass states for layerA, layerB or the overlay, it will leave the layer as is on a transition.
+### 参数
 
+* **layer** — 一个图层对象。
+* **transition** — 带有动画状态的方法。
+* **options.animate** — 布尔值，设置图层变换是否需要动画（可选）。
+* **options.scroll** — 布尔值，设置图层是否可滚动（可选）。
+
+
+    # Custom transition 
+    scaleTransition = (nav, layerA, layerB, overlay) ->
+        transition =
+            layerA:
+                show:
+                    scale: 1.0
+                    opacity: 1
+                hide:
+                    scale: 0.5
+                    opacity: 0
+            layerB:
+                show:
+                    scale: 1.0
+                    opacity: 1
+                hide:
+                    scale: 0.5
+                    opacity: 0
+     
+    # Create layers 
+    layerA = new Layer
+        backgroundColor: "#00AAFF"
+        size: Screen.size
+     
+    layerB = new Layer
+        backgroundColor: "#FFCC33"
+        size: Screen.size
+     
+    # Create FlowComponent 
+    flow = new FlowComponent
+    flow.showNext(layerA)
+     
+    # Switch to layerB with custom transition 
+    layerA.onClick ->
+        flow.transition(layerB, scaleTransition)
+
+
+>The custom transition is a function that returns an object with states. Inside the function you have access to the arguments current FlowComponent, layerA, layerB and the overlay. If you don’t pass states for layerA, layerB or the overlay, it will leave the layer as is on a transition.
+
+<a id="flowComponent.header"></a>
 flow.header <layer>
 
-Add a sticky header to a scrollable screen, like a a fixed navigation bar.
+>Add a sticky header to a scrollable screen, like a a fixed navigation bar.
 
-# Create navigation layer 
-navBar = new Layer
- 
-# Create FlowComponent 
-flow = new FlowComponent
- 
-# Anchor layer to the top 
-flow.header = navBar
+    # Create navigation layer 
+    navBar = new Layer
+     
+    # Create FlowComponent 
+    flow = new FlowComponent
+     
+    # Anchor layer to the top 
+    flow.header = navBar
 
+<a id="flowComponent.footer"></a>
 flow.footer <layer>
 
-Add a sticky footer to a scrollable screen, like a a fixed tab bar.
+>Add a sticky footer to a scrollable screen, like a a fixed tab bar.
 
-# Create tab bar layer 
-tabBar = new Layer
- 
-# Create FlowComponent 
-flow = new FlowComponent
- 
-# Anchor layer to the bottom 
-flow.footer = tabBar
+    # Create tab bar layer 
+    tabBar = new Layer
+     
+    # Create FlowComponent 
+    flow = new FlowComponent
+     
+    # Anchor layer to the bottom 
+    flow.footer = tabBar
 

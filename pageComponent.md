@@ -1,62 +1,66 @@
-PageComponent
+# PageComponent
 
-The PageComponent is based on the ScrollComponent, but designed for displaying paginated instead of continuous content. It supports content layers of different sizes, and can snap to layers based on location and scroll velocity.
+页面组件是基于滚动组件的，但是是为多页面展现而设计的，而不是像滚动组件一样展示连续的内容。它支持不同尺寸的内容页，并能够基于图层位置和滚动速度来对齐图层。
+>The PageComponent is based on the ScrollComponent, but designed for displaying paginated instead of continuous content. It supports content layers of different sizes, and can snap to layers based on location and scroll velocity.
 
-# Create a new PageComponent and only allow horizontal scrolling. 
-page = new PageComponent
-    width: Screen.width
-    height: Screen.height
-    scrollVertical: false
- 
-# Define the first page 
-pageOne = new Layer
-    width: page.width
-    height: page.height
-    parent: page.content
-    backgroundColor: "#28affa"
-
-Let's add a second page now. Read more about the addPage method.
-
-# Define second page 
-pageTwo = new Layer
-    width: page.width
-    height: page.height
-    backgroundColor: "#90D7FF"
- 
-# Add the second page to the right 
-page.addPage(pageTwo, "right")
-
-Another way to go about adding content is by using a for-loop.
-
-# Create a new PageComponent and only allow horizontal scrolling. 
-page = new PageComponent
-    width: Screen.width
-    height: Screen.height
-    scrollVertical: false
-    backgroundColor: "#fff"
- 
-# Create 5 new layers and add them to the page.content 
-for number in [0...5]
-    pageContent = new Layer
+    # 创建一个新的 PageComponent 并只允许横向滚动
+    page = new PageComponent
+        width: Screen.width
+        height: Screen.height
+        scrollVertical: false
+     
+    # 创建第一个页面
+    pageOne = new Layer
         width: page.width
         height: page.height
-        x: page.width * number
-        backgroundColor: Utils.randomColor(0.5)
         parent: page.content
- 
-    # Visualize the current page number 
-    pageContent.html = pageContent.html = number + 1
- 
-    # Center the current page number 
-    pageContent.style =
-        "font-size" : "100px",
-        "font-weight" : "100",
-        "text-align" : "center",
-        "line-height" : "#{page.height}px"
+        backgroundColor: "#28affa"
 
-page.originX <number>
+创建第二个页面，点[这里](#pageComponent.addPage)了解`addPage`方法。
+>Let's add a second page now. Read more about the addPage method.
 
-Defines how pages will be horizontally snapped to. The origin is defined as a number between 0 and 1, where 0 is the left-edge and 1 the right-edge. The default value is 0.5, the center.
+    # Define second page 
+    pageTwo = new Layer
+        width: page.width
+        height: page.height
+        backgroundColor: "#90D7FF"
+     
+    # Add the second page to the right 
+    page.addPage(pageTwo, "right")
+
+>Another way to go about adding content is by using a for-loop.
+
+    # Create a new PageComponent and only allow horizontal scrolling. 
+    page = new PageComponent
+        width: Screen.width
+        height: Screen.height
+        scrollVertical: false
+        backgroundColor: "#fff"
+     
+    # Create 5 new layers and add them to the page.content 
+    for number in [0...5]
+        pageContent = new Layer
+            width: page.width
+            height: page.height
+            x: page.width * number
+            backgroundColor: Utils.randomColor(0.5)
+            parent: page.content
+     
+        # Visualize the current page number 
+        pageContent.html = pageContent.html = number + 1
+     
+        # Center the current page number 
+        pageContent.style =
+            "font-size" : "100px",
+            "font-weight" : "100",
+            "text-align" : "center",
+            "line-height" : "#{page.height}px"
+
+<a id="pageComponent.originX"></a>
+## page.originX <number>
+
+
+>Defines how pages will be horizontally snapped to. The origin is defined as a number between 0 and 1, where 0 is the left-edge and 1 the right-edge. The default value is 0.5, the center.
 
 page = new PageComponent
 page.originX = 0
@@ -91,7 +95,7 @@ Set the animation options for the PageComponent. This defines the animation that
 page = new PageComponent
  
 page.animationOptions =
-    curve: "ease"
+    curve: Bezier.ease
     time: 0.25
 
 page.currentPage <Layer object>
@@ -189,7 +193,7 @@ pageTwo = new Layer
 page.addPage(pageTwo, "right")
  
 # Automatically scroll to pageTwo 
-page.snapToPage( pageTwo)
+page.snapToPage(pageTwo)
 
 In the example above, we can customize the scrolling animation by defining custom animationOptions as well.
 
@@ -197,7 +201,7 @@ In the example above, we can customize the scrolling animation by defining custo
 page.snapToPage(
     pageTwo
     true
-    animationOptions = curve: "ease", time: 2
+    animationOptions = time: 2
 )
 
 page.snapToNextPage(direction, animate, animationOptions)
@@ -341,3 +345,4 @@ print page.verticalPageIndex(pageA)
  
 print page.verticalPageIndex(pageB)
 # Prints: 1 
+
