@@ -28,6 +28,7 @@
     # Add the second page to the right 
     page.addPage(pageTwo, "right")
 
+另外一种添加页面的方式是使用 `for` 循环。
 >Another way to go about adding content is by using a for-loop.
 
     # Create a new PageComponent and only allow horizontal scrolling. 
@@ -57,22 +58,22 @@
             "line-height" : "#{page.height}px"
 
 <a id="pageComponent.originX"></a>
-## page.originX <number>
+## page.originX &lt;number&gt;
 
 
 >Defines how pages will be horizontally snapped to. The origin is defined as a number between 0 and 1, where 0 is the left-edge and 1 the right-edge. The default value is 0.5, the center.
 
-page = new PageComponent
-page.originX = 0
+    page = new PageComponent
+    page.originX = 0
 
-page.originY <number>
+## page.originY &lt;number&gt;
 
 Defines how pages will be vertically snapped to. The origin is defined as a number between 0 and 1, where 0 is the top-edge and 1 the bottom-edge. The default value is 0.5, the center.
 
 page = new PageComponent
 page.originY = 0
 
-page.velocityThreshold <number>
+page.velocityThreshold &lt;number&gt;
 
 The velocityThreshold influences the role velocity plays in snapping to a different page. Besides the scrolling distance, the PageComponent also takes your scrolling speed (velocity) into account.
 

@@ -1,15 +1,15 @@
-Screen
+# Screen
 
-The Screen object contains the size of the current device screen. The size changes when switching to a different device. You can also change the background color and the perspective of the device screen.
+>The Screen object contains the size of the current device screen. The size changes when switching to a different device. You can also change the background color and the perspective of the device screen.
 
-Screen.backgroundColor <string>
+## Screen.backgroundColor <string>
 
-Sets the background color of the device screen.
+>Sets the background color of the device screen.
 
-# Change the device screen background color 
-Screen.backgroundColor = "#28affa"
+	# Change the device screen background color 
+	Screen.backgroundColor = "#28affa"
 
-Screen.width <number>
+## Screen.width <number>
 
 The width of the current device screen in pixels. (Read-only)
 

@@ -238,7 +238,7 @@
 <a id="flowComponent.transition"></a>
 ## flow.transition(layer, transition, options)
 
-创建一个自定义过渡效果。
+创建一个自定义过渡效果，这个页面间的向前向后过渡使用内部状态的转换来实现。一共有三个图层（当前页、下一页和背景），每个图层带有两个状态（向前`back`和向后`forward`）。如果你没有特别定义一个状态，`FlowComponent`就认为你不想让这个图层在页面跳转时执行过渡动画。
 >Create a custom transition. The transitions use states internally to cycle back and forward. There are three layers (current, next and background) with two states each (back and forward). If you don’t define a specific state, the FlowComponent assumes you don’t want to animate that layer.
 
 ### 参数
@@ -249,7 +249,7 @@
 * **options.scroll** — 布尔值，设置图层是否可滚动（可选）。
 
 
-    # Custom transition 
+    # 自定义过渡
     scaleTransition = (nav, layerA, layerB, overlay) ->
         transition =
             layerA:
@@ -267,7 +267,7 @@
                     scale: 0.5
                     opacity: 0
      
-    # Create layers 
+    # 创建图层
     layerA = new Layer
         backgroundColor: "#00AAFF"
         size: Screen.size
@@ -276,20 +276,82 @@
         backgroundColor: "#FFCC33"
         size: Screen.size
      
-    # Create FlowComponent 
+    # 创建页面流组件
     flow = new FlowComponent
     flow.showNext(layerA)
      
-    # Switch to layerB with custom transition 
+    # 使用自定义的过渡方法跳转到layerB
     layerA.onClick ->
         flow.transition(layerB, scaleTransition)
 
-
+你可以通过自定义一个返回状态对象的函数来自定义过渡效果。在这个函数中，你可以获取到当前页面流组件的一些参数以及`layerA`，`layerB`，`overlay`。如果你不向`layerA`，`layerB`，`overlay`传递状态，它就不会出现在这里。
 >The custom transition is a function that returns an object with states. Inside the function you have access to the arguments current FlowComponent, layerA, layerB and the overlay. If you don’t pass states for layerA, layerB or the overlay, it will leave the layer as is on a transition.
 
-<a id="flowComponent.header"></a>
-flow.header <layer>
+<a id="flowComponent.current"></a>
+## flow.current &lt;layer&gt;
 
+当前可见的页面（屏幕）。
+>The layer (screen) that is currently visible.
+
+    # Create layer 
+    layerA = new Layer
+        size: Screen.size
+     
+    # Create FlowComponent, add layer 
+    flow = new FlowComponent
+    flow.showNext(layerA)
+     
+    # Get current screen 
+    print flow.current
+
+<a id="flowComponent.scroll"></a>
+## flow.scroll &lt;layer&gt;
+
+自动生成的滚动组件。任何页面流组件子图层的宽或高超出时都会自动变成可滚动的，你可以通过`flow.scroll`来访问它。
+>The automatically generated ScrollComponent layer. Any child layer that exceeds the width or height of the FlowComponent are automatically made scrollable. You can target the ScrollComponent with flow.scroll.
+
+    # Create layer 
+    layerA = new Layer
+        width: Screen.width
+        height: Screen.height + 100
+     
+    # Create FlowComponent, add layer 
+    flow = new FlowComponent
+    flow.showNext(layerA)
+     
+    # Adjust contentInset 
+    flow.scroll.contentInset =
+        top: 100
+
+在`flow.scroll`中所有滚动事件都是可以使用的，不过这些事件只会对当前可见页面（屏幕）有效。
+>All scroll events are available when using flow.scroll. These events will only apply to the layer (or screen) that is currently visible.
+
+    # Create layer 
+    layerA = new Layer
+        width: Screen.width
+        height: Screen.height + 100
+     
+    # Create FlowComponent, add layer 
+    flow = new FlowComponent
+    flow.showNext(layerA)
+     
+    # Listen to scroll event 
+    flow.scroll.onMove ->
+        ...
+
+需要注意的是，当你直接监听`FlowComponent`的滚动事件时，比如`flow.onScroll`这样，那么它所有的可滚动子图层都会被触发该事件。
+>Note that if you listen to scrolling events directly on the FlowComponent, like flow.onScroll, the event will apply to all scrollable child layers.
+
+    # Applies to any child layer 
+    flow.onMove -> ...
+     
+    # Applies to the currently visible layer 
+    flow.scroll.onMove -> ...
+
+<a id="flowComponent.header"></a>
+## flow.header &lt;layer&gt;
+
+给可滚动屏幕添加一个固定位置的顶栏，比如一个固定的导航栏。
 >Add a sticky header to a scrollable screen, like a a fixed navigation bar.
 
     # Create navigation layer 
@@ -302,8 +364,9 @@ flow.header <layer>
     flow.header = navBar
 
 <a id="flowComponent.footer"></a>
-flow.footer <layer>
+## flow.footer &lt;layer&gt;
 
+给可滚动屏幕添加一个固定位置的底懒，比如一个固定的底部选项导航。
 >Add a sticky footer to a scrollable screen, like a a fixed tab bar.
 
     # Create tab bar layer 
