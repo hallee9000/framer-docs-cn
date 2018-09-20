@@ -1,13 +1,12 @@
-# 目录
 ​* [Framer](README.md)
 
 ## 入门
 ​
-* [资源](learn/resources.md)
-* [设计模式](learn/design.md)
-* [代码模式](learn/code.md)
-* [编程知识](learn/programming.md)
-* [协作](learn/collaborate.md)
+* [资源](start/resources.md)
+* [设计模式](start/design.md)
+* [代码模式](start/code.md)
+* [编程知识](start/programming.md)
+* [协作](start/collaborate.md)
 
 ## 文档
 ​
