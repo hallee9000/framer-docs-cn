@@ -1,32 +1,16 @@
-<a id="books"></a>
-<h2 class="h2-first">书籍</h2>
+# 资源
 
-《Framer 原型设计指南》目前已在豆瓣专栏开通。这本书通过实例逐个讲解 Framer 中的一些概念，如图层、状态、组件等，再通过一些综合案例帮助你进阶。
+## 书籍
 
-<ul class="row">
-	<li class="col-sm-6 col-md-4">
-		<a href="https://read.douban.com/column/6650494" target="_blank" class="link-plain">
-			<img src="/images/learn/resources/resources-douban.jpg">
-			<p>《Framer 原型设计指南》豆瓣专栏</p>
-		</a>
-	</li>
-</ul>
+《Framer 原型设计指南》豆瓣专栏是我写的一本比较成体系的教程书，通过实例逐个讲解 Framer 中的一些概念，如图层、状态、组件等，再通过一些综合案例帮助你进阶。
 
-<a id="videos"></a>
-<h2 class="h2-first">视频教程</h2>
+[![豆瓣专栏](../assets/resources-douban.jpg)](https://read.douban.com/column/6650494)
 
-国内第一份比较完整的视频教程，帮助初学者快速入门。
+## 视频教程
 
-<ul class="row">
-	<li class="col-sm-6 col-md-4">
-		<a href="https://space.bilibili.com/345880241/#/channel/detail?cid=45101" target="_blank" class="link-plain">
-			<img src="/images/learn/resources/resources-video.jpg">
-			<p>Framer Studio 基础入门系列中文教程</p>
-		</a>
-	</li>
-</ul>
+《Framer Studio 基础入门系列中文教程》是国内第一份比较完整的视频教程，帮助初学者快速入门。
+[![豆瓣专栏](../assets/resources-video.jpg)](https://space.bilibili.com/345880241/#/channel/detail?cid=45101)
 
-<a id="patterns"></a>
 ## 官方模板
 
 这两个模板包含了常见的 iOS 和 Android 上的交互控件，包括动作菜单、滚动视图和页面等。

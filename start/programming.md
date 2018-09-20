@@ -1,5 +1,6 @@
-<a id="intro"></a>
-<h2 class="h2-first">简介</h2>
+# 编程知识
+
+## 简介
 
 ##### 对于表达动效来说，编程是十分强大的工具。你可以使用简单的代码语句去描述复杂的行为，比如逻辑运算、变量及循环等。虽然编程正逐渐变得简单，但是对于大多数设计师来说刚开始学习还是很具有挑战性的。这一章节的主要目的就是帮助你进入代码的世界，同时教会你如何高效地使用代码。
 
@@ -36,8 +37,8 @@ CoffeeScript 和其他语言最大的不同之处是它依赖于缩进或空格�
 
 有时候你可能需要输出一些值，来检查代码当前运行的状态。你可以使用 `print` 方法，就像下面一样：
 
-    print "Hello" # Prints Hello 
-    print 10 + 1 # Prints 11 
+    print "Hello" # Prints Hello
+    print 10 + 1 # Prints 11
 
 <a id="variables"></a>
 ## 变量
@@ -51,7 +52,7 @@ CoffeeScript 和其他语言最大的不同之处是它依赖于缩进或空格�
 你可以给变量随意命名，只要它是一个单独的词句。
 
     boxA = "Something"
-    boxB = 12345 # A variable can be a number too 
+    boxB = 12345 # A variable can be a number too
 
 在 Framer 中我们经常将图层存储在一个变量中。图层是 Framer 中的基本元素，所有的界面都是由图层构建的。你可以去[图层的文档](/docs/layer)了解更多，现在让我们使用 `new` 关键词创建一个图层并将其存储在变量中。
 
@@ -60,10 +61,10 @@ CoffeeScript 和其他语言最大的不同之处是它依赖于缩进或空格�
 假如说现在你想要创建多个图层，它们都有着一样的宽度，那么你可能会写多个创建图层的代码，重复地定义它们的宽度。但是现在如果你想要改变它们的宽度，就要一个个地去修改了。但是假如你使用了变量，就只需要定义一次，在修改时也只需要修改一次。
 
     screenWidth = 400
-     
+
     myLayerA = new Layer
         width: screenWidth
-     
+
     myLayerB = new Layer
         width: screenWidth
 
@@ -95,7 +96,7 @@ CoffeeScript 和其他语言最大的不同之处是它依赖于缩进或空格�
 
 有时候你还可以使用一个值来重新计算它自己。就像下面这个例子，你想将图层向右移动一点位置，在原来的横坐标基础上增加 100 ，就可以这么写：
 
-    # layerA.x is 200 by default 
+    # layerA.x is 200 by default
     layerA.x = layerA.x + 100
 
 <a id="strings"></a>
@@ -109,31 +110,31 @@ CoffeeScript 和其他语言最大的不同之处是它依赖于缩进或空格�
 
 你可以使用 `+` 来计算数字，在字符串中你也可以使用加号对两个字符串进行计算，不过这里的加号表示将两个字符串连接起来。
 
-    # This code: 
+    # This code:
     print "click" + "me"
-     
-    # Is the same as: 
+
+    # Is the same as:
     print "clickme"
 
 你也可以将字符串和变量使用加号连接在一起。
 
     name = "Koen"
     city = "Amsterdam"
- 
+
     print "Hello my name is " + name + " and I live in " + city
-    # Hello my name is Koen and I live in Amsterdam 
+    # Hello my name is Koen and I live in Amsterdam
 
 这样的操作在很多地方很有用，但是阅读起来却很费劲。所以我们推荐使用字符串模板来做动态文本。
 
     print "Hello my name is #{name} and I live in #{city}"
-    # Hello my name is Koen and I live in Amsterdam 
+    # Hello my name is Koen and I live in Amsterdam
 
 你还可以在字符串模板中添加一些简单的计算：
 
     age = 25
-     
+
     print "I’m #{age} now and #{age + 10} in ten years from now."
-    # I’m 25 now and 35 in ten years from now. 
+    # I’m 25 now and 35 in ten years from now.
 
 <a id="booleans"></a>
 ## 布尔值
@@ -147,13 +148,13 @@ layerB.draggable.enabled = true
 
 我们可以通过 `not` 来将一个布尔值反转。
 
-    # Switches the visibility of a layer 
+    # Switches the visibility of a layer
     layer.visible = not layer.visible
 
 你可以使用逻辑关键词 `and` 或 `or` 来连接布尔值，使用 `and` 连接表示只有两个值都为 `true` 时整个表达式的值才为 `true` ，而使用 `or` 连接表示两个值中有一个值为 `true` 时整个表达式的值就为 `true` 。
 
-    print layerB.visible and layerC.visible # false 
-    print layerB.visible or layerC.visible # true 
+    print layerB.visible and layerC.visible # false
+    print layerB.visible or layerC.visible # true
 
 <a id="conditionals"></a>
 ## 条件
@@ -163,11 +164,11 @@ layerB.draggable.enabled = true
 在下面的例子中，我们通过点击一个图层来切换另一个图层的可见性。使用 `if` 语句，你可以检测一个图层是否可见。
 
     button = new Layer
-     
-    # Place a layer in the center 
+
+    # Place a layer in the center
     layerA = new Layer
         point: Align.center
-     
+
     button.onClick ->
         if layerA.visible
             layerA.visible = false
@@ -178,11 +179,11 @@ layerB.draggable.enabled = true
 
     layerA = new Layer
     layerA.draggable.enabled = true
-     
+
     marker = new Layer
         x: Align.center
         y: Align.center
-     
+
     layerA.onDrag ->
         if layerA.y > marker.y
             layerA.backgroundColor = "red"
@@ -205,11 +206,11 @@ layerB.draggable.enabled = true
     layerA = new Layer
         size: 50
         backgroundColor: "blue"
-     
+
     layerB = new Layer
         size: 50
         backgroundColor: "blue"
-     
+
     layerC = new Layer
         size: 50
         backgroundColor: "blue"
@@ -236,10 +237,10 @@ layerB.draggable.enabled = true
     layerA = new Layer
     layerB = new Layer
     layerC = new Layer
-     
-    # Put all the layers in an array so we can loop them 
+
+    # Put all the layers in an array so we can loop them
     layers = [layerA, layerB, layerC]
-     
+
     for layer in layers
         layer.size = 50
         layer.backgroundColor = "blue"
@@ -251,9 +252,9 @@ layerB.draggable.enabled = true
     layerA = new Layer x: 0
     layerB = new Layer x: 220
     layerC = new Layer x: 440
-     
+
     layers = [layerA, layerB, layerC]
-     
+
     for layer in layers
         layer.onClick ->
             layer.backgroundColor = "blue"
@@ -274,7 +275,7 @@ layerB.draggable.enabled = true
     sayHello = ->
         print "Hello!"
         print "How are you?"
-     
+
     sayHello()
     sayHello()
     sayHello()
@@ -282,57 +283,57 @@ layerB.draggable.enabled = true
 注意在一个函数内部的每一行缩进，我们称之为函数体。在上面的实例中，函数执行的时机是我们定的，下面的例子中我们可以让 Framer 决定执行的时机。除了点击，也可以是其他事件。
 
     layerA = new Layer
-     
+
     layerA.onClick ->
         layerA.rotation = layerA.rotation + 10
 
 你可能注意到了上面例子中的函数是没有名字的，不像 `sayHello` 函数一样。如果我们给它命名，也是可以这样执行的。
 
     layerA = new Layer
-     
+
     rotate = ->
         layerA.rotation = layerA.rotation + 10
-     
+
     layerA.onClick(rotate)
 
 就像一个数学公式一样，一个函数可以有多个输入和一个输出。比如说你想讲数学式子 `y = x * 10` 转换成一个函数：
 
     y = (x) ->
         return x * 10
-     
-    print y(10) # Prints 100 
+
+    print y(10) # Prints 100
 
 但是更加程序化的写法是使用有意义的命名。比如下面的函数和上面的功能一模一样，只是变量的名字改变了，却更加易读。
 
     timesTen = (someNumber) ->
         return someNumber * 10
-     
-    print timesTen(10) # Prints 100 
+
+    print timesTen(10) # Prints 100
 
 函数的输入是参数，输出是返回值。比如我们前面举的一个例子，我们想使用这个函数来多次旋转一个图层。
 
     layerA = new Layer
-     
+
     layerB = new Layer
         x: Align.right
-     
+
     rotate = (layer) ->
         layer.rotation = layer.rotation + 10
-     
-    # Now, we can pass in any layer! Neat. 
-     
+
+    # Now, we can pass in any layer! Neat.
+
     layerA.onClick ->
         rotate(layerA)
-     
+
     layerB.onClick ->
         rotate(layerB)
 
 多个参数使用逗号分隔开，这里我们添加第二个参数——旋转的角度。
 
-    # Multiple parameters 
+    # Multiple parameters
     rotate = (layer, degrees) ->
         layer.rotation = layer.rotation + degrees
-     
+
     layerA.onClick ->
         rotate(layerA, 10)
 
@@ -340,11 +341,11 @@ layerB.draggable.enabled = true
 
     rotate = (layer, degrees = 10) ->
         layer.rotation = layer.rotation + degrees
-     
-    # 10 degrees 
+
+    # 10 degrees
     rotate(layerA)
-     
-     # 50 degrees 
+
+     # 50 degrees
     rotate(layerB, 50)
 
 
@@ -355,7 +356,7 @@ layerB.draggable.enabled = true
             return firstLayer.width
         else
             return secondLayer.width
-     
+
     layerC = new Layer
         width: largestWidth(layerA, layerB)
 
@@ -370,7 +371,7 @@ layerB.draggable.enabled = true
         koen: "123 Main Street"
         sara: "456 Wall Street"
         jorn: "789 Arts Street"
-     
+
     print people.koen
 
 在 Framer 中我们会经常使用 对象，但是最常见的是在创建图层时给图层一系列初始选项。
@@ -396,15 +397,15 @@ layerB.draggable.enabled = true
         koen: 33
         jorn: 32
         ben: 21
-     
+
     print ages.koen # 33
     print ages["ben"] # 21
 
 基于字符串的方式可以让你动态的创建一些对象的索引，比如创建一个包含多个状态的对象：
 
     layerA = new Layer
-     
-    # Add states within a loop 
+
+    # Add states within a loop
     for i in [1..3]
         layerA.states["state#{i}"] =
             y: i * 200
@@ -415,11 +416,11 @@ layerB.draggable.enabled = true
         koen: 33
         jorn: 32
         ben: 21
-     
+
     for key, value of people
         print key, value
-     
-    # Or more logically named 
+
+    # Or more logically named
     for name, age of people
         print name, age
 
@@ -436,28 +437,28 @@ layerB.draggable.enabled = true
 
 创建你自己的子类很容易。如果在你的原型中有很多不一样的按钮，你就可以创建一个按钮基类，在其中定义按钮的颜色和尺寸。
 
-    # Create Class 
+    # Create Class
     class Button extends Layer
         constructor: (options) ->
-     
-            # Get default layer functionality 
+
+            # Get default layer functionality
             super(options)
-     
-            # Set default properties 
+
+            # Set default properties
             @width = 300
             @height = 100
             @backgroundColor = "maroon"
-     
-    # Create button 
+
+    # Create button
     button = new Button
 
 `@` 符号指向 `Button` 类本身。不过这个按钮目前还不够灵活，因为我们给它定义的宽度会被构造器函数的语句覆盖。
 
-    # This does not work 
+    # This does not work
     button = new Button
         width: 250
-     
-    # This will work 
+
+    # This will work
     button.width = 250
 
 为了能够使我们在初次创建按钮时可以自定义宽度，我们可以改一下构造函数中的代码。这里我们借用第三方库 lodash 的 [defaults](https://lodash.com/docs#defaults) 方法来合并自定义选项和默认选项：
@@ -468,8 +469,8 @@ layerB.draggable.enabled = true
                 width: 300
                 height: 100
                 backgroundColor: "maroon"
-     
-    # Works! 
+
+    # Works!
     button = new Button
         width: 250
 
@@ -480,13 +481,13 @@ layerB.draggable.enabled = true
             super _.defaults options,
                 width: 300
                 height: 100
-     
-            # Deactivate by default 
+
+            # Deactivate by default
             @deactivate()
-     
+
         activate: ->
             @backgroundColor = "red"
-     
+
         deactivate: ->
             @backgroundColor = "maroon"
 
@@ -494,7 +495,7 @@ layerB.draggable.enabled = true
 
     button.onTapStart ->
         @activate()
-     
+
     button.onTapEnd ->
         @deactivate()
 
@@ -505,20 +506,20 @@ layerB.draggable.enabled = true
             super _.defaults options,
                 width: 300
                 height: 100
-     
-            # Deactivate by default 
+
+            # Deactivate by default
             @deactivate()
-     
-            # Add events handlers 
+
+            # Add events handlers
             @onTapStart ->
                 @activate()
-     
+
             @onTapEnd ->
                 @deactivate()
-     
+
         activate: ->
             @backgroundColor = "red"
-     
+
         deactivate: ->
             @backgroundColor = "maroon"
 
@@ -535,7 +536,7 @@ layerB.draggable.enabled = true
     createLayer = (backgroundColor) ->
         new Layer
             backgroundColor: backgroundColor
-     
+
     createLayer("blue")
     createLayer("blue")
 
@@ -545,7 +546,7 @@ layerB.draggable.enabled = true
         constructor: (options) ->
             super
             @backgroundColor = "blue"
-     
+
     new BlueLayer
     new BlueLayer
 
@@ -562,7 +563,7 @@ layerB.draggable.enabled = true
         layer = new Layer
             backgroundColor: "blue"
             y: i * 250
-     
+
         layer.onClick ->
             layer.backgroundColor = "red"
 
@@ -578,7 +579,7 @@ layerB.draggable.enabled = true
         layer = new Layer
             backgroundColor: "blue"
             y: i * 250
-     
+
         layer.onClick ->
             this.backgroundColor = "red"
 
@@ -592,13 +593,13 @@ layerB.draggable.enabled = true
 另一种解决方法是使用 `do` 来“捕捉”变量。比如说，你需要在事件处理代码中使用它“捕捉”图层变量。
 
     button = new Layer
-     
+
     for i in [1..3]
-     
+
         layer = new Layer
             backgroundColor: "blue"
             y: i * 250
-     
+
         do (layer) ->
             button.onClick ->
                 layer.backgroundColor = "red"

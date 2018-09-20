@@ -1,0 +1,16 @@
+# 基本
+本章节主要包含集中基本的图层说明，如画布、屏幕、SVG、视频等，以及一些常用的东西，如设备、颜色等等。
+* [align](align.md)
+* [backgroundLayer](backgroundLayer.md)
+* [canvas](canvas.md)
+* [color](color.md)
+* [defaults](defaults.md)
+* [device](device.md)
+* [gradient](gradient.md)
+* [layer](layer.md)
+* [screen](screen.md)
+* [textLayer](textLayer.md)
+* [svgLayer](svgLayer.md)
+* [svgPath](svgPath.md)
+* [svgGroup](svgGroup.md)
+* [videoLayer](videoLayer.md)

@@ -1,6 +1,7 @@
-​* [Framer](README.md)
+​
+* [Framer](README.md)
 
-## 入门
+## start
 ​
 * [资源](start/resources.md)
 * [设计模式](start/design.md)
@@ -8,9 +9,9 @@
 * [编程知识](start/programming.md)
 * [协作](start/collaborate.md)
 
-## 文档
+## docs
 ​
-* [基本](docs/basic/align.md)
+* [基本](docs/basic/README.md)
     * [align](docs/basic/align.md)
     * [backgroundLayer](docs/basic/backgroundLayer.md)
     * [canvas](docs/basic/canvas.md)
@@ -25,21 +26,21 @@
     * [svgPath](docs/basic/svgPath.md)
     * [svgGroup](docs/basic/svgGroup.md)
     * [videoLayer](docs/basic/videoLayer.md)
-* [动画&状态](docs/motion/animation.md)
+* [动画&状态](docs/motion/README.md)
     * [animation](docs/motion/animation.md)
     * [states](docs/motion/states.md)
-* [事件](docs/events/events.md)
+* [事件](docs/events/README.md)
     * [events](docs/events/events.md)
     * [draggable](docs/events/draggable.md)
     * [pinchable](docs/events/pinchable.md)
-* [组件](docs/components/scrollComponent.md)
+* [组件](docs/components/README.md)
     * [scrollComponent](docs/components/scrollComponent.md)
     * [pageComponent](docs/components/pageComponent.md)
     * [sliderComponent](docs/components/sliderComponent.md)
     * [rangeSliderComponent](docs/components/rangeSliderComponent.md)
     * [flowComponent](docs/components/flowComponent.md)
     * [midiComponent](docs/components/midiComponent.md)
-* [其它](docs/others/sensors.md)
+* [其它](docs/others/README.md)
     * [sensors](docs/others/sensors.md)
     * [compatibility](docs/others/compatibility.md)
     * [extras](docs/others/extras.md)

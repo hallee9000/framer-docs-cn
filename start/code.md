@@ -1,7 +1,8 @@
-<a id="code"></a>
-<h2 class="h2-first">代码</h2>
+# 代码模式
 
-##### 在这一节，我们了解一下如何使用代码在 Framer 中创建交互动效，以及一些简单指示。
+## 代码
+
+**在这一节，我们了解一下如何使用代码在 Framer 中创建交互动效，以及一些简单指示。**
 
 不管你有没有代码知识，我们设计 Framer 代码的初衷都是为了让它变得有趣有价值。对于初学者来说，如果你了解基础的 HTML 、CSS 或 Javascript 知识，这将会对你的学习有一定帮助，但是渴望学习的心同样重要。很多设计师——大部分没有代码基础——开始使用Framer，到最后做了很多精彩的作品，并将此作为提升他们事业的工具。在此期间，我们也一直从他们的经验中汲取灵感，给Framer提供更加便利的工具以便设计师能够更快上手。
 
@@ -11,10 +12,9 @@
 
 如果你对这些基础知识已经很熟悉了，可以去我们的[编程指南](/learn/programming)学习更加复杂的内容，比如逻辑、变量和循环等。
 
-<a id="workflow"></a>
 ## 工作流
 
-##### 在 Framer 中你有三种方式给一个元素添加动效。在这篇指南中，我们将会给你讲解代码模式和设计模式之间的关系，以及如何从外部导入设计图并使用代码给其添加动效。
+**在 Framer 中你有三种方式给一个元素添加动效。在这篇指南中，我们将会给你讲解代码模式和设计模式之间的关系，以及如何从外部导入设计图并使用代码给其添加动效。**
 
 为了有一个更加高效的工作流程，我们建议你直接在 Framer 设计模式下进行设计。你可以直接在画布上拖拽来绘制画布，也可以直接使用内置的不同设备尺寸画布。Framer 的设计模式是基于代码模式进行过优化的，所以在这里设计是极其直观和自适应的。继承、布局以及图层分组都是经过优化的，他可以更好的和代码模式相结合。当你完成设计部分时，只需要给需要添加交互的元素添加代码目标，就可以在代码模式下去使用它。
 
@@ -48,15 +48,15 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 如果你是在画板中进行设计的，那么在代码模式下使用它就很棒。画出一个画板之后，你在这个画板中所绘制的所有图层都会自动变成它的子图层。将一个画板设置为代码目标之后，它里面的元素在代码模式下也都可以看见。这使得制作页面跳转之类的交互变得简单。
 
-    # Initialize FlowComponent 
+    # Initialize FlowComponent
     flow = new FlowComponent
-     
-    #  Set up a flow from your artboards 
+
+    #  Set up a flow from your artboards
     flow.showNext(ArtboardA)
-     
+
     ArtboardA.onClick ->
         flow.showNext(ArtboardB)
-     
+
     ArtboardB.onClick ->
         flow.showPrevious() -->
 
@@ -69,15 +69,15 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 ### 为代码而设计
 你使用框架设计能够很好地转换到代码中。每一个框架都会被默认设定为它内部所有图层的父图层，所以给一个框架设定代码目标时，就默认给它的所有子图层也设定了。这样的话制作类似于 `FlowComponent` 这样的交互效果就变得简单多了。
 
-    # Initialize FlowComponent 
+    # Initialize FlowComponent
     flow = new FlowComponent
-     
-    #  Set up a flow from your Frames 
+
+    #  Set up a flow from your Frames
     flow.showNext(FrameA)
-     
+
     FrameA.onClick ->
         flow.showNext(FrameB)
-     
+
     FrameB.onClick ->
         flow.showPrevious()
 
@@ -92,7 +92,7 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 当你在设计模式下设置好了图层的代码目标，就可以切换到代码模式下开始使用它了。想要对一个图层进行操作，只需要在代码模式下写上它的代码目标名字，并在后面添加你想要实现的代码逻辑。
 
-    #  Target and animate a layer from your design 
+    #  Target and animate a layer from your design
     my_layer.animate
         y: 200
         options:
@@ -103,12 +103,12 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 在 Framer 中插入的图层有很多种类型的属性，比如定义它的位置和样式的属性，以及你想要添加一些交互效果的属性。你在代码模式下可以使用代码覆盖这些属性值，比如你在设计模式下绘制了一个红色的图层，在代码模式下可以这样把他的背景色改成蓝色。
 
-    # Background layer override 
+    # Background layer override
     background.backgroundColor = "#28affb"
 
 一个图层有很多视觉化的属性，通过这些属性你可以对他它进行变换、缩放、隐藏等等。在设计模式下定义的外观样式在代码模式下仍然可以适用代码覆盖。
 
-    # Override properties 
+    # Override properties
     layerB.borderRadius = 4
     layerB.rotation = 45
     layerB.opacity = 0.5
@@ -122,16 +122,16 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 一个图层的位置是由它的 `x` 和 `y` 属性决定的，这两个值定义了图层距离画布左上角的距离。
 
-    # Position layerA 
+    # Position layerA
     layerA.x = 200
     layerA.y = 200
 
 图层的位置也可以动态地去定义，比如要让一个图层的位置相对于另一个图层。加入我们现在想让图层 B 的坐标处于图层 A 的中心，就可以使用图层的 `midX` 和 `midY` 属性。你可以在[文档](/docs/layer#minX)中查看其他关于位置的属性。
 
-    # Align to center of the x axis of layerA 
+    # Align to center of the x axis of layerA
     layerB.x = layerA.midX
-     
-    # Align to center of the y axis of layerA 
+
+    # Align to center of the y axis of layerA
     layerB.y = layerA.midY
 
 你还可以使用 `Align` 对象来控制一个图层的对齐。图层的父子关系一般在设计模式下就被定义好了，但是你仍然可以在代码中更改它们。你也可以单独设定图层水平对期或垂直对齐， `Align` 对象的所有属性都在下面：
@@ -143,10 +143,10 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 * Align.center (x and y)
 
 
-    # Define layerA as the parent of layerB 
+    # Define layerA as the parent of layerB
     layerB.parent = layerA
-     
-    # Align layerB to the bottom right of its parent 
+
+    # Align layerB to the bottom right of its parent
     layerB.x = Align.right
     layerB.y = Align.bottom
 
@@ -154,7 +154,7 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 你可以在设计模式下对图层进行分组，也可以在代码模式下重新分组。处于另一个图层中的图层被叫做子图层，包含其他图层的图层叫做父图层。图层会从父图层继承一些属性，比如透明度和位置。
 
-    # Two ways to define hierarchy 
+    # Two ways to define hierarchy
     layerB.parent = layerA
     layerA.addChild(layerB)
 
@@ -163,14 +163,14 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
     layerA = new Layer
     layerB = new Layer
 
-    # Place layerB on top 
+    # Place layerB on top
     layerB.placeBefore(layerA)
 
 ### 图层类型
 
 图层可以是任何事物，想想一下背景图层、图片图层、视频图层、文字图层等等。在设计模式下你可以添加常规图层，在代码模式下你可以插入一些可交互元素作为图层，比如视频图层、音频图层。想要添加一个视频图层，你只需要把一个视频拖拽到代码模式下即可。
 
-    # Video 
+    # Video
     video = new VideoLayer
         video: "fish.mp4"
 
@@ -178,12 +178,12 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 在 Framer 中可以直接添加文字图层。为了保证文字内容或颜色可变，你可以在代码模式下使用 `TextLayer` 。文字图层具有一些特殊属性，他的长宽会根据文字长短自动计算出来。
 
-    # Create text layer 
+    # Create text layer
     title = new TextLayer
         text: "Hello!"
 大部分的文字图层样式是来自于 CSS 的，你可以在[文字图层文档](/docs/textLayer)里查看更多。
 
-    # Create text layer 
+    # Create text layer
     title = new TextLayer
         text: "Hello!"
         fontSize: 64
@@ -193,30 +193,30 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 你可以使用强大的文字模板功能来对文字进行操作或动画，设置动态文字内容时请使用 `{}` 将变量包裹。
 
-    # Create text layer with template tag. 
+    # Create text layer with template tag.
     layerA = new TextLayer
       text: "{speed}KM/h"
-     
-    # Set speed template tag value. 
+
+    # Set speed template tag value.
     layerA.template =
       speed: 50
-     
-    # Shorthand for when there's only one tag. 
+
+    # Shorthand for when there's only one tag.
     layerA.template = 50
-    # Both result in "50KM/h". 
+    # Both result in "50KM/h".
 
 我们也可以使用文字模板来格式化文本，或产生值变化的动画。
 
-    # Create text layer with template tags. 
+    # Create text layer with template tags.
     layerA = new TextLayer
       text: "{speed}{unit}/h"
-     
-    # Format template value to only have 2 decimals. 
+
+    # Format template value to only have 2 decimals.
     layerA.templateFormatter =
       speed: (value) ->
         Utils.round(value, 2)
-     
-    # Animate template value from 0 to 100. 
+
+    # Animate template value from 0 to 100.
     layerA.animate
       template:
         speed: 100
@@ -224,7 +224,7 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 如果只是一个动态文本，你可以使用下面的简写方式。
 
-    # Format template value to only have 2 decimals. 
+    # Format template value to only have 2 decimals.
     layerA.templateFormatter = (value) ->
       Utils.round(value, 2)
 
@@ -251,7 +251,7 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 动画的时间是以秒定义的，通过设置动画的 `options` 属性可以设置他的一些参数，他下面的各个选项定义要再往后缩进一级。
 
-    # Animate with an easing curve 
+    # Animate with an easing curve
     layerA.animate
         rotation: 180
         borderRadius: 200
@@ -269,7 +269,7 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 * **Bezier.easeInOut**
 
 
-    # Animate with an easing curve 
+    # Animate with an easing curve
     layerA.animate
         scale: 0.75
         options:
@@ -282,7 +282,7 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 为了使得动画的效果接近现实中的物理效果，你应该使用弹性曲线。动画的弹性可以使用阻尼 `damping` 来描述，它也可以配合时间 `time` 一起使用。
 
 
-    # Animate with a spring curve 
+    # Animate with a spring curve
     layerA.animate
         scale: 0.75
         options:
@@ -301,30 +301,30 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 在下面这个个例子中，图层刚开始的的不透明度是 100% ,然后你在代码中给它定义了一个新状态 `fade` ，让它在此状态下不透明度变成 0 。
 
 
-    # A new state titled "fade" 
+    # A new state titled "fade"
     layerA.states.fade =
         opacity: 0
 
 刚创建的图层都有一个默认状态 `default` ，所以你可以让它从默认状态 `default` 切换到 `fade` 状态。
 
-    # Animate to the state 
+    # Animate to the state
     layerA.animate("fade")
-     
-    # Instantly switch to the state 
+
+    # Instantly switch to the state
     layerA.stateSwitch("fade")
 
 ### 循环切换状态
 
 你也可以在图层的状态之间循环切换，只需要使用 `stateCycle()` 方法。如同图层动画一样，你也可以给它的状态设置动画属性。
 
-    # Add states and animation options 
+    # Add states and animation options
     layerA.states.rotate =
         rotation: 0
         animationOptions:
             time: 1
             curve: Bezier.ease
-     
-    # Cycle between states 
+
+    # Cycle between states
     layerA.onTap ->
         layerA.stateCycle()
 
@@ -332,7 +332,7 @@ Framer 预览窗口提供实时反馈，无论你在设计模式还是代码模�
 
 如果想覆盖掉一个状态，只需要给它添加一个同名状态就可以了。
 
-    # Override third state 
+    # Override third state
     layerA.states.rotate =
         rotation: 180
 
@@ -354,7 +354,7 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
 
 最常见的事件使用就是当点击图层时切换它的状态。
 
-    # Toggle states on tap 
+    # Toggle states on tap
     settings.onTap ->
         settings.stateCycle()
 
@@ -362,7 +362,7 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
 
 你可以使用动画事件来链式地链接动画，比如当你使用 `AnimationEnd` 监听到一个动画结束时可以立即开始另一个动画。
 
-    # Animation Events 
+    # Animation Events
     layerA.onAnimationStart ->
         ...
     layerA.onAnimationEnd ->
@@ -374,7 +374,7 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
         x: 80
         options:
             curve: Bezier.ease
-     
+
     layerA.onAnimationEnd ->
         layerA.animate
             x: 0
@@ -392,14 +392,14 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
 
 你可以通过禁用水平或垂直方向的拖动，来限定可拖动的方向，他们默认都是开启的。你还可以定义拖动的速度，让图层在被拖动时做加速运动或者减速运动。
 
-    # Make the layer draggable 
+    # Make the layer draggable
     layerA.draggable.enabled = true
-     
-    # Prevent vertical dragging 
+
+    # Prevent vertical dragging
     layerA.draggable.horizontal = true
     layerA.draggable.vertical = false
-     
-    # Alternative way by setting the speed 
+
+    # Alternative way by setting the speed
     layerA.draggable.speedX = 1
     layerA.draggable.speedY = 0
 
@@ -409,10 +409,10 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
 
 `constraints` 中包含 `x` 、`y` 、`width` 和 `height` 四个属性，你可以想象通过这四个值新画了一个图层，而这个新图层就是可拖动图层的可拖动范围。
 
-    # Make the layer draggable 
+    # Make the layer draggable
     layerA.draggable.enabled = true
-     
-    # Set the constraints frame 
+
+    # Set the constraints frame
     layerA.draggable.constraints =
         x: 0
         y: 0
@@ -429,25 +429,25 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
 
 最后，当你设置它的动量模拟 `momentum` 为 `false` 之后，虽然你还可以拖动它，但是却没有了在物理空间中拖动真实材料的感觉了。`momentum` 和 `bounce` 属性也可以自定义，你可以看看这个[示例](https://framer.cloud/vJWUh)。
 
-    # Disable overdrag 
+    # Disable overdrag
     layerA.draggable.overdrag = false
-     
-    # Disable bounce 
+
+    # Disable bounce
     layerA.draggable.bounce = false
-     
-    # Disable momentum 
+
+    # Disable momentum
     layerA.draggable.momentum = false
 
 ### 事件
 
 关于拖动有三个基本事件可以监听：`DragStart`、`DragMove` 和 `DragEnd` 。还有一个移动事件，它会在图层移动时触发。它不同于 `DragMove` 事件，因为它还包含图层被松开后的动量模拟动画。
 
-    # Start dragging 
+    # Start dragging
     layerA.onDragStart ->
         layerA.animate
             scale: 1.1
-     
-    # After dragging 
+
+    # After dragging
     layerA.onDragEnd ->
         layerA.animate
             scale: 1
@@ -456,12 +456,12 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
 
 除了上述的事件以外，在你设置 `momentum` 和 `bounce` 为 `true` 时还有两个特殊的事件：`DragAnimationDidStart` 和 `DragAnimationDidEnd` 。他们在拖动结束，也就是你松开鼠标之后，当图层仍然在运动时被触发。
 
-    # After DragEnd, the DragAnimation starts 
+    # After DragEnd, the DragAnimation starts
     layerA.onDragAnimationStart ->
         layerA.animate
             scale: 0.8
-     
-    # Starts with the momentum and bounce 
+
+    # Starts with the momentum and bounce
     layerA.onDragAnimationEnd ->
         layerA.animate
             scale: 1
@@ -477,20 +477,20 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
 
 可捏放图层的可捏放特性有两个属性：`scale` 和 `rotate`，默认开启可捏放时它俩都会被开启。如果禁止了 `sacle` ，那么你只能对图层进行两指旋转，反之亦然。
 
-    # Disable scale on pinch 
+    # Disable scale on pinch
     layerA.pinchable.scale = false
-     
-    # Disable rotation on pinch 
+
+    # Disable rotation on pinch
     layerA.pinchable.rotate = false
 
 ### 捏放事件
 
 关于捏放有三个基本事件：`onPinch`、`onPinchStart` 和 `onPinchEnd` 。让我们来用一下最后一个事件，开启图层可捏放，这是我们可以对图层进行两指捏放或旋转，然后在捏放事件结束时让他恢复原状。
 
-    # Enable pinching 
+    # Enable pinching
     layerA.pinchable.enabled = true
-     
-    # Animate back to original position 
+
+    # Animate back to original position
     layerA.onPinchEnd ->
         layerA.animate
             scale: 1
@@ -503,11 +503,11 @@ Framer 的所有事件中，最常见的就是 `onTap` 、 `onScroll` 这些。�
 
 如果你同时开启了图层的可拖动和可捏放，那么这个图层就变成可平移的了。平移事件和拖动事件类似，唯一不同点在于它是多指拖动的。你可以使用 `onPan` 来检测平移事件。
 
-    # Enable panning 
+    # Enable panning
     layerA.draggable.enabled = true
     layerA.pinchable.enabled = true
-     
-    # Animate back to original position 
+
+    # Animate back to original position
     layerA.onDragEnd ->
         layerA.animate
             scale: 1
@@ -537,7 +537,7 @@ Framer 中包含这些组件，下面我们简单介绍一下 Flow、Scroll 、P
 
 现在让我们一起给流组件添加第一个页面。你只需要使用 `showNext` 方法就可以把一个图层添加进去，第一次添加的图层不会有动画效果。
 
-    # Create FlowComponent, show layerA 
+    # Create FlowComponent, show layerA
     flow = new FlowComponent
     flow.showNext(layerA)
 
@@ -545,21 +545,21 @@ Framer 中包含这些组件，下面我们简单介绍一下 Flow、Scroll 、P
 
 你可以使用 `showNext` 切换界面。
 
-    # Create FlowComponent, show layer 
+    # Create FlowComponent, show layer
     flow = new FlowComponent
     flow.showNext(layerA)
 
-    # Switch screens on click 
+    # Switch screens on click
     layerA.onClick ->
         flow.showNext(layerB)
 
 Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 方法来回到上一个界面。
 
-    # Switch to next screen 
+    # Switch to next screen
     layerA.onClick ->
         flow.showNext(layerB)
-     
-    # Switch to previous screen 
+
+    # Switch to previous screen
     layerB.onClick ->
         flow.showPrevious()
 
@@ -574,12 +574,12 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 * **showOverlayLeft**
 
 
-    # Create FlowComponent 
+    # Create FlowComponent
     flow = new FlowComponent
-     
-    # Modal and button are set up in the design tab 
-     
-    # Switch back 
+
+    # Modal and button are set up in the design tab
+
+    # Switch back
     button.onClick ->
         flow.showOverlayCenter(modal)
 
@@ -591,10 +591,10 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 
 当然，你也可以使用流组件的 `footer` 或 `header` 属性来给它添加顶栏和低栏。这样添加的顶栏或底栏会一直固定在屏幕的上边缘或下边缘，即使跳转页面。
 
-    # Set a fixed navigation bar (on top) 
+    # Set a fixed navigation bar (on top)
     flow.header = flowBar
-     
-    # Set a fixed tab bar (on bottom) 
+
+    # Set a fixed tab bar (on bottom)
     flow.footer = tabBar
 
 ### 可滚动示例
@@ -612,13 +612,13 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 
 第二个图层是里面的内容图层，它已经被设置为可拖动了，而且包含了一个预设的滑动范围。它的尺寸是根据它的子图层计算得来的，一般情况下和你插入的图层一样大。
 
-    # Create a ScrollComponent 
+    # Create a ScrollComponent
     scroll = new ScrollComponent
         size: 120
-     
-    # Assign the content layers 
+
+    # Assign the content layers
     layerA.parent = scroll.content
-     
+
     layerB.parent = scroll.content
 
 和图层的可滚动属性一样，你可以给他限定可滚动方向。
@@ -630,20 +630,20 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 
 给你的静态设计图赋予生命的一种好方法就是让它可以滚动，而让一个图层可滚动最简单的方法就是使用一个滚动组件包裹它，一般我们使用 `ScrollComponent.wrap()` 方法。
 
-    # Wrap the content layers 
+    # Wrap the content layers
     scroll = ScrollComponent.wrap(content)
 
 ### 内容嵌入
 
 如果你想要给内嵌的内容周围添加一些空间，你可以使用 `contentInset` 属性。想想一下如果在一个列表的顶部有一个顶栏，你不想让用户拖动顶栏时列表也滑动，就可以使用这个属性》一个常见的例子是[ Twitter 的 iOS 客户端信息流滚动](https://framer.cloud/zpfFY)。
 
-    # Create a ScrollComponent 
+    # Create a ScrollComponent
     scroll = new ScrollComponent
         width: 120
         height: 120
         scrollHorizontal: false
-     
-    # Define the contentInset 
+
+    # Define the contentInset
     scroll.contentInset =
         top: 40
         bottom: 40
@@ -654,14 +654,14 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 
 滚动有三个基本事件：`ScrollStart` 、`Scroll`（或 `ScrollMove` ）和 `ScrollEnd` 。有了这些事件，你可以监听它们，然后获得当前滚动的坐标值。比如，你可以通过判断垂直滚动距离 `scroll.scrollY` 达到一定值之后才开始执行一个动画。
 
-    # Create a ScrollComponent 
+    # Create a ScrollComponent
     scroll = new ScrollComponent
         scrollHorizontal: false
-     
-    # Listen to the Scroll event 
+
+    # Listen to the Scroll event
     scroll.onScroll ->
         if scroll.scrollY < -10
-     
+
             layerA.animate
                 scale: 1
 
@@ -669,12 +669,12 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 
 和可拖动图层一样，如果开启了动量和弹性模拟我们还可以监听两个特别事件：`ScrollAnimationDidStart` 和 `ScrollAnimationDidEnd` ，它们都是在手指松开拖动结束之后发生的。
 
-    # After Scroll, the ScrollAnimation starts 
+    # After Scroll, the ScrollAnimation starts
     scroll.onScrollAnimationDidStart ->
         layer.animate
             width: 100
-     
-    # After the scroll animation 
+
+    # After the scroll animation
     scroll.onScrollAnimationDidEnd ->
         layer.animate
             width: 120
@@ -686,13 +686,13 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 
 页面组件可以让你轻松地在多个页面之间进行滑动切换，它是基于滚动组件的。
 
-    # Create a PageComponent 
+    # Create a PageComponent
     page = new PageComponent
-     
-    # Define first page layer 
+
+    # Define first page layer
     layerA.parent = page.content
-     
-    # Define second page layer place it to the right 
+
+    # Define second page layer place it to the right
     layerB.parent = page.content
     layerB.x = 200
 
@@ -700,11 +700,11 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 
 你可以使用 `page.addPage()` 来添加页面，它会将你指定的图层添加在页面组件的右侧。当然，你也可以添加在底部。
 
-    # Create a PageComponent 
+    # Create a PageComponent
     page = new PageComponent
-     
-    # Add layerA to the right 
-    # Add layerB to the bottom 
+
+    # Add layerA to the right
+    # Add layerB to the bottom
     page.addPage(layerA)
     page.addPage(layerB, "bottom")
 
@@ -712,29 +712,29 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 
 如果想让你的静态图层变成可以滑动切换的几个页面，你只需要使用页面组件的 `PageComponent.wrap()` 方法来包裹它。
 
-    # Wrap the content layer 
+    # Wrap the content layer
     page = PageComponent.wrap(content)
 
 ### 排序与分类
 
 检测页面是否正在切换可以使用 `change:currentPage` 事件，基于此你可以给页面组件添加切换的指示器。
 
-    # Listen to any page switch 
+    # Listen to any page switch
     page.on "change:currentPage", ->
         page.previousPage.animate
             opacity: 0.2
             scale: 0.8
-     
+
         page.currentPage.animate
             opacity: 1
             scale: 1
 
 也许你不一定想每次都从第一页开始，你可以使用 `snapToPage` 直接跳到某一页，可以以动画形式也可以直接跳过去。
 
-    # Snap to the layer pageThree 
+    # Snap to the layer pageThree
     page.snapToPage(pageThree)
-     
-    # Snap with a custom animation curve 
+
+    # Snap with a custom animation curve
     page.snapToPage(pageTwo, true, curve: Spring)
 
 ### 页面索引
@@ -745,10 +745,10 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
         for layer in indicators
             layer.animate
                 opacity: 0.5
-     
+
         current = page.currentPage
         i = page.horizontalPageIndex(current)
-     
+
         indicators[i].animate
             opacity: 1
 
@@ -767,36 +767,36 @@ Framer 会记录你的界面切换路径，所以你可以使用 `showPrevious` 
 * **knobSize** (把手尺寸)
 
 
-    # Create Slider 
+    # Create Slider
     slider = new SliderComponent
         min: 0
         max: 100
         value: 50
         knobSize: 40
-     
-    # Customize fill color 
+
+    # Customize fill color
     slider.fill.backgroundColor = "#fff"
 
 滑块本身就是个图层，所以你可以随意更改它的外观样式，对于把手和填充区也是一样的。
 
-    # Customize slider 
+    # Customize slider
     slider.backgroundColor = "#DDD"
-     
-    # Customize fill 
+
+    # Customize fill
     slider.fill.backgroundColor = "#00AAFF"
-     
-    # Customize knob 
+
+    # Customize knob
     slider.knob.shadowY = 2
     Value Changes
 
 使用 `onValueChange` 方法，你可以知道当前的值并在这个值改变时将其返回。
 
-    # Create Slider 
+    # Create Slider
     slider = new SliderComponent
         min: 0
         max: 100
         value: 50
-     
-    # Get the current value 
+
+    # Get the current value
     slider.onValueChange ->
         print slider.value

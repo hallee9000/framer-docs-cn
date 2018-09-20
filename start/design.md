@@ -1,5 +1,6 @@
-<a id="design"></a>
-<h2 class="h2-first">设计</h2>
+# 设计模式
+
+## 设计
 
 ##### 在这一节，我们将对 Framer 的设计模式进行简要介绍。它是代码模式最好的搭档。尤其擅长响应式的设计。通过设计模式，你可以在 Framer 中快速画出原型界面，并通过代码将其变成高保真原型。
 
@@ -234,7 +235,7 @@ Framer 的导出功能和你预想的一样，你可以同时导出多种分辨�
 </video>
 
 ### 快速导出
-你可以右击一个图层快速导出。你可以选择复制图片或者使用快捷键 `CMD + C` 来复制选中项，接着可以粘贴到其他地方，比如在文档中，在原型软件中或是在聊天软件中粘贴。 
+你可以右击一个图层快速导出。你可以选择复制图片或者使用快捷键 `CMD + C` 来复制选中项，接着可以粘贴到其他地方，比如在文档中，在原型软件中或是在聊天软件中粘贴。
 
 <video loop autoplay>
 	<source src="/images/learn/design/export-quick.mp4" type="video/mp4">
@@ -387,17 +388,17 @@ Framer 会将设计文件中的一个组（非空）作为一个图层，所以�
 
 一旦你成功导入设计图，将会在代码区的顶部看见如下代码：
 
-    # Import file "design" 
+    # Import file "design"
     sketch = Framer.Importer.load("imported/design@1x")
 
 这段代码就包含了所有你导入的图层。默认情况下，这个文件的变量名是你刚才的文件名，你也可以重命名以便引用内部图层时更加方便。
 
 现在，你可以访问到你所导入的设计图中的一个叫做 layerA 的分组：
 
-    # Import file "design" 
+    # Import file "design"
     sketch = Framer.Importer.load("imported/design@1x")
-     
-    # Set the opacity of layerA 
+
+    # Set the opacity of layerA
     sketch.layerA.opacity = 0.5
 
 在其它组内的组叫做children。在下面的例子中，这个组有两个子组。你可以直接选去它们，而无需考虑层级。
@@ -435,4 +436,3 @@ Framer 会将设计文件中的一个组（非空）作为一个图层，所以�
 隐藏图层也会被导入，但是 `visibility` 属性会被默认设置为 `false` 。
 
 ![](/images/learn/design/ss-visibility@2x.png)
-
